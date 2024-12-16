@@ -18,8 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'name', 'apellido', 'email', 'estadoCuenta',
         'password',
     ];
 
@@ -41,4 +40,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setPasswordAtteibute($password) {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
+    public function disentrenadores()
+    {
+        return $this->hasMany(Disentrenador::class);
+    }
 }
