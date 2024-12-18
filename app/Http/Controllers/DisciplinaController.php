@@ -18,7 +18,7 @@ class DisciplinaController extends Controller
     {
         abort_if(Gate::denies('disciplina_index'), 403);
         $disciplinas = Disciplina::orderBy('id', 'asc')->get();
-        return view('disciplinas.index', compact('disciplinas'))->with('tipo', 'all');
+        return view('admin.disciplinas.index', compact('disciplinas'))->with('tipo', 'all');
     }
 
     public function UpdateStatusNoti(Request $request) {
